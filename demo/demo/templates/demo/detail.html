@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo</title>
+    <style>
+      body {
+        font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+      }
+      h2 {
+        text-align: center;
+      }
+      table {
+        margin: 1em auto;
+      }
+      table th, table td {
+        padding: 1em;
+      }
+      table th {
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h2>Attachment</h2>
+    <table>
+      <tr>
+        <th>Database says</th>
+        <td>{{ object.attachment }}</td>
+      </tr>
+      <tr>
+        <th><code>attachment.url</code> is</th>
+        <td><a href="{{ object.attachment.url }}">{{ object.attachment.url }}</a></td>
+      </tr>
+    </table>
+
+    <h2>Image</h2>
+    <table>
+      <tr>
+        <th>Database says</th>
+        <td>{{ object.image }}</td>
+      </tr>
+      <tr>
+        <th><code>attachment.url</code> is</th>
+        <td><a href="{{ object.image.url }}">{{ object.image.url }}</a></td>
+      </tr>
+      <tr>
+        <td>The result</td>
+        <td><img src="{{ object.image.url }}" width="{{ object.width }}" height="{{ object.height }}" /></td>
+      </tr>
+    </table>
+
+    <div style="text-align: center;"><a href="{% url 'index' %}">Try again</a></div>
+
+  </body>
+</html>

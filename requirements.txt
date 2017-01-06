@@ -1,0 +1,6 @@
+# It may work on older versions, but I won't test for them.
+Django>=1.8
+
+cryptography>=1.7.1
+requests>=2.12.4
+python-magic==0.4.12
