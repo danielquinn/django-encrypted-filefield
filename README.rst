@@ -53,6 +53,8 @@ All you have to do is change the file fields and you've got encrypted files
 
     # settings.py
 
+    DEFF_SALT = b"The secret key.  This should be long."
+    DEFF_PASSWORD = b"The password.  This should be long too."
     DEFF_FETCH_URL_NAME = "whatever-url-name-you-want"
 
 

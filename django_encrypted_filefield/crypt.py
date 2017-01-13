@@ -15,10 +15,10 @@ class Cryptographer(object):
         return Fernet(base64.urlsafe_b64encode(PBKDF2HMAC(
             algorithm=hashes.SHA256(),
             length=32,
-            salt=settings.DJ_ENCRYPTED_FILEFIELD_SALT,
+            salt=settings.DEFF_SALT,
             iterations=100000,
             backend=default_backend()
-        ).derive(settings.DJ_ENCRYPTED_FILEFIELD_PASSWORD)))
+        ).derive(settings.DEFF_PASSWORD)))
 
     @classmethod
     def encrypted(cls, content):
