@@ -128,3 +128,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 DJ_ENCRYPTED_FILEFIELD_SALT = b"I'm batman"
 DJ_ENCRYPTED_FILEFIELD_PASSWORD = b"Would you like to ride with Batman?"
+DEFF_FETCH_URL_NAME = "my-fetch-name"

@@ -51,6 +51,11 @@ All you have to do is change the file fields and you've got encrypted files
 
 .. code:: python
 
+    # settings.py
+
+    DEFF_FETCH_URL_NAME = "whatever-url-name-you-want"
+
+
     # my_app/models.py
 
     from django_encrypted_filefield.fields import (
@@ -94,7 +99,11 @@ All you have to do is change the file fields and you've got encrypted files
 
     urlpatterns = [
         # ...
-        url(r"^fetch$", MyFetchView.as_view(), name="fetch"),
+        url(
+            r"^my-fetch-url/(?P<path>.+)",  # up to you, but path is required
+            MyFetchView.as_view(),          # your view, your permissions
+            name=settings.DEFF_FETCH_URL_NAME
+        ),
         # ...
     ]
 

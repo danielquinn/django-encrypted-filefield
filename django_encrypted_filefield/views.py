@@ -28,7 +28,7 @@ class FetchView(View):
 
     def get(self, request, *args, **kwargs):
 
-        path = request.GET.get("path")
+        path = kwargs.get("path")
 
         # No path?  You're boned.  Move along.
         if not path:
