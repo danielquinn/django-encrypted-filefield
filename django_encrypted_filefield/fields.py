@@ -36,7 +36,7 @@ class EncryptionMixin(object):
 
     def _get_url(self):
         return reverse(settings.DEFF_FETCH_URL_NAME, kwargs={
-            "path": url_encode(FieldFile._get_url(self))
+            "path": FieldFile._get_url(self)
         })
     url = property(_get_url)
 
