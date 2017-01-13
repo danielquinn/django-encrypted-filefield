@@ -128,4 +128,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 DJ_ENCRYPTED_FILEFIELD_SALT = b"I'm batman"
 DJ_ENCRYPTED_FILEFIELD_PASSWORD = b"Would you like to ride with Batman?"
+
+# These are the only values tht need to be set to make the encryption work.
+# Note that once they're set, changing the SALT and PASSWORD values will
+# prevent you from being able to read files encrypted with the old values.
 DEFF_FETCH_URL_NAME = "my-fetch-name"

@@ -24,6 +24,15 @@ class FetchView(View):
       class FetchView(LoginRequiredMixin, BaseFetchView):
           pass
 
+    Using LoginRequiredMixin would effectively allow anyone with a site login
+    to view *all* files, while using something like StaffRequiredMixin would
+    mean that only staff members could read the file.
+
+    Theoretically you could also write your view to be smart enough to take the
+    requested path and match it against a list of permissions, allowing you to
+    set out per-user permissions whilst still only using one encryption key for
+    the whole site.
+
     """
 
     def get(self, request, *args, **kwargs):
