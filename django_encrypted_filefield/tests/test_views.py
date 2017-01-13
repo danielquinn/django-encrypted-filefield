@@ -19,22 +19,20 @@ class ViewsTestCase(TestCase):
         b'v2ai'
     )
 
-    def test_empty_path(self):
-        self.assertEqual(
-            self.client.get(reverse("fetch")).status_code, 404)
-        self.assertEqual(
-            self.client.get(reverse("fetch"), {"path": ""}).status_code, 404)
-
-    def test_path_starts_with_slash(self):
+    @override_settings(DEFF_FETCH_URL_NAME="fetch")
+    @override_settings(MEDIA_ROOT="/tmp")
+    def test_path_starts_media_root(self):
         kwargs = {"path": "/etc/passwd"}
         self.assertEqual(
-            self.client.get(reverse("fetch"), kwargs).status_code, 404)
+            self.client.get(reverse("fetch", kwargs=kwargs)).status_code, 404)
 
+    @override_settings(DEFF_FETCH_URL_NAME="fetch")
     def test_path_does_not_exist(self):
         kwargs = {"path": "this/file/does/not/exist"}
         self.assertEqual(
-            self.client.get(reverse("fetch"), kwargs).status_code, 404)
+            self.client.get(reverse("fetch", kwargs=kwargs)).status_code, 404)
 
+    @override_settings(DEFF_FETCH_URL_NAME="fetch")
     @mock.patch("django_encrypted_filefield.views.os.path.exists")
     @mock.patch(
         "django_encrypted_filefield.views.open",
@@ -44,7 +42,7 @@ class ViewsTestCase(TestCase):
     def test_local_path_exists(self, exists):
         exists.return_value = True
         kwargs = {"path": "dummy-file"}
-        response = self.client.get(reverse("fetch"), kwargs)
+        response = self.client.get(reverse("fetch", kwargs=kwargs))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content, self.GIF)
         self.assertEqual(response["Content-Type"], "image/gif")
