@@ -126,10 +126,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-
-# These are the only values tht need to be set to make the encryption work.
-# Note that once they're set, changing the SALT and PASSWORD values will
-# prevent you from being able to read files encrypted with the old values.
-DEFF_SALT = b"I'm batman"
-DEFF_PASSWORD = b"Would you like to ride with Batman?"
-DEFF_FETCH_URL_NAME = "my-fetch-name"

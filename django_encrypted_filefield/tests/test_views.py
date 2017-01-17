@@ -14,9 +14,9 @@ class ViewsTestCase(TestCase):
         b'\x00\x00\x01\x00\x01\x00\x00\x02\x02D\x01\x00;'
     )
     ENCRYPTED_GIF = (
-        b'gAAAAABYdqQ9WGU1wl8-wZ98LLKwiTcly3zseV70K2gVobCdTdvWDyXQBSbE6ZDaC6xi'
-        b'pqH6pIC4TZWvuY3eW0PhT-JfxtahcCye_eqpGLYT_7Vxw0vMr1aZdGrz4Wn8FGWcFn8y'
-        b'v2ai'
+        b'gAAAAABYfg7U-LcnC9SIDUW5eohDVSRuAo27xk33GO_a2IOFy-HOBQCLRYlpfT4eG9s1'
+        b'hYyBMiF1YeU1uMkMHMflwsX-nz2vp5dvClW496hHpcXJOLbvJ2pCxAqxCbL0HrJU5WRy'
+        b'AKu4'
     )
 
     @override_settings(DEFF_FETCH_URL_NAME="fetch")

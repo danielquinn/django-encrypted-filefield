@@ -10,8 +10,8 @@ Why This Exists
 
 It's increasingly common to use products like S3 to host static files, but
 sometimes those static files aren't exactly meant for public eyes.  You might
-push some bit of personal client information into S3 and then anyone with the
-URL will be able to see it.
+push some bit of personal information into S3 and then anyone with the URL will
+be able to see it.
 
 Sure, the URL may be really hard to guess, but I'm not a fan of "security
 through obscurity" so I wrote this to encrypt stuff I push to S3.  Now, only
@@ -50,13 +50,6 @@ So where you may have once had this:
 All you have to do is change the file fields and you've got encrypted files
 
 .. code:: python
-
-    # settings.py
-
-    DEFF_SALT = b"The secret key.  This should be long."
-    DEFF_PASSWORD = b"The password.  This should be long too."
-    DEFF_FETCH_URL_NAME = "whatever-url-name-you-want"
-
 
     # my_app/models.py
 
@@ -97,17 +90,30 @@ All you have to do is change the file fields and you've got encrypted files
 
     # my_app/urls.py
 
-    from .views import MyFetchView
+    from django_encrypted_filefield.constants import FETCH_URL_NAME
+    from myapp.views import MyFetchView
 
     urlpatterns = [
         # ...
         url(
             r"^my-fetch-url/(?P<path>.+)",  # up to you, but path is required
             MyFetchView.as_view(),          # your view, your permissions
-            name=settings.DEFF_FETCH_URL_NAME
+            name=FETCH_URL_NAME
         ),
         # ...
     ]
+
+
+How do I Run the Tests?
+-----------------------
+
+As this project depends on the setting of three environment variables, you have
+to set these for the tests.  Also, the tests are expecting these values, so
+don't change them:
+
+.. code:: bash
+
+    $ DEFF_SALT="salt" DEFF_PASSWORD="password" DEFF_FETCH_URL_NAME="fetch" ./manage.py test
 
 
 Is There a Demo?
@@ -120,18 +126,15 @@ directory:
 
     $ git clone git@github.com:danielquinn/django-encrypted-filefield.git
     $ cd django-encrypted-filefield/demo
+    $ export DEFF_SALT="salt"
+    $ export DEFF_PASSWORD="password"
+    $ export DEFF_FETCH_URL_NAME="fetch"
     $ ./manage migrate
     $ ./manage.py runserver
 
 ...then open http://localhost:8000 and submit two files via the form.  In this
 case we're using Django's default_storage, but the same logic should apply to
 all storage engines.
-
-You can also run the tests from there:
-
-.. code:: bash
-
-    $ ./manage.py test
 
 
 What's the Status of the Project?
