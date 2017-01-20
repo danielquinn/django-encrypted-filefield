@@ -1,7 +1,7 @@
 import os
 
 from django.core.checks import Error, Warning, register
-from django.core.urlresolvers import reverse, NoReverseMatch
+from django.core.urlresolvers import NoReverseMatch, reverse
 
 from .constants import FETCH_URL_NAME, PASSWORD, SALT
 
