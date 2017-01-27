@@ -9,6 +9,7 @@ from django.db.models.fields.files import (
     ImageFieldFile
 )
 
+from .constants import FETCH_URL_NAME
 from .crypt import Cryptographer
 
 try:
@@ -35,7 +36,7 @@ class EncryptionMixin(object):
     save.alters_data = True
 
     def _get_url(self):
-        return reverse(settings.DEFF_FETCH_URL_NAME, kwargs={
+        return reverse(FETCH_URL_NAME, kwargs={
             "path": FieldFile._get_url(self)
         })
     url = property(_get_url)
