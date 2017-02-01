@@ -137,6 +137,19 @@ case we're using Django's default_storage, but the same logic should apply to
 all storage engines.
 
 
+Stuff That Doesn't Work
+-----------------------
+
+Since the file changes just before it's saved, you can't apply a validator
+that acts on the contents of the file.  For example, if you've got a validator
+that uses mime-magic to determine the file type, it will always return
+``text/plain`` which, unless that's what you're checking for, will break your
+validation.  To make things more interesting, Django appears to apply
+validation on field values *on every save*, not just when the field has
+changed, so even if the validator were to work on the first run, whenever you
+would update the object in the admin, your validator will barf in this case.
+
+
 What's the Status of the Project?
 ---------------------------------
 
