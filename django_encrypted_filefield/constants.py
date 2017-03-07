@@ -1,5 +1,6 @@
 import os
 from django.conf import settings
+from django.utils import six
 
 
 def _get_setting(name):
@@ -8,9 +9,11 @@ def _get_setting(name):
 
 
 def get_bytes(v):
-    if v:
+    if isinstance(v, six.string_types):
         return bytes(v.encode("utf-8"))
-    return None
+    if not v:
+        return None
+    return v
 
 
 SALT = get_bytes(_get_setting("SALT"))
