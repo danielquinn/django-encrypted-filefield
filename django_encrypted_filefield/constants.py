@@ -1,12 +1,18 @@
 import os
+from django.conf import settings
 
 
-def get_bytes(name):
-    r = os.getenv("DEFF_{}".format(name))
-    if r:
-        return bytes(r.encode("utf-8"))
+def _get_setting(name):
+    setting_name = "DEFF_{}".format(name)
+    return os.getenv(setting_name, getattr(settings, setting_name, None))
+
+
+def get_bytes(v):
+    if v:
+        return bytes(v.encode("utf-8"))
     return None
 
-SALT = get_bytes("SALT")
-PASSWORD = get_bytes("PASSWORD")
-FETCH_URL_NAME = os.getenv("DEFF_FETCH_URL_NAME")
+
+SALT = get_bytes(_get_setting("SALT"))
+PASSWORD = get_bytes(_get_setting("PASSWORD"))
+FETCH_URL_NAME = _get_setting("FETCH_URL_NAME")
