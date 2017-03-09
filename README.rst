@@ -153,5 +153,7 @@ would update the object in the admin, your validator will barf in this case.
 What's the Status of the Project?
 ---------------------------------
 
-Alpha.  I'm actively developing this, so if you find a bug, please let me know.
-If you use it yourself, great!  But if it breaks, you've been warned.
+Stable.  I'm actively using it in a production environment now and have been
+for some time without issue.  This isn't a guarantee that it'll work for
+everyone in every case of course, but it's enough for me to use that word :-)
+
