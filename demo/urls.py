@@ -1,4 +1,4 @@
-from django.conf import settings
+from django_encrypted_filefield.constants import FETCH_URL_NAME
 from django.conf.urls import url
 from django.contrib import admin
 
@@ -16,7 +16,7 @@ urlpatterns = [
     url(
         r"^fetch/(?P<path>.+)",
         MyFetchView.as_view(),
-        name=settings.DEFF_FETCH_URL_NAME
+        name=FETCH_URL_NAME
     ),
 
 ]
