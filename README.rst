@@ -88,6 +88,8 @@ All you have to do is change the file fields and you've got encrypted files
         pass
 
 
+.. code:: python
+
     # my_app/urls.py
 
     from django_encrypted_filefield.constants import FETCH_URL_NAME
@@ -104,7 +106,21 @@ All you have to do is change the file fields and you've got encrypted files
     ]
 
 
-How do I Run the Tests?
+How Do I Configure It?
+----------------------
+
+Configuration of the package requires setting three values in either the
+environment (recommended) or in your ``settings.py``.  These values are:
+
+* ``DEFF_SALT``: The salt value use for generating the synchronous encryption
+* ``DEFF_PASSWORD``: The password value for the same thing
+* ``DEFF_FETCH_URL_NAME``: The named URL you intend to use to download the
+  files as they're decrypted on-the-fly.
+
+Outside of that, follow the above and you should be good to go.
+
+
+How Do I Run the Tests?
 -----------------------
 
 As this project depends on the setting of three environment variables, you have
@@ -156,4 +172,3 @@ What's the Status of the Project?
 Stable.  I'm actively using it in a production environment now and have been
 for some time without issue.  This isn't a guarantee that it'll work for
 everyone in every case of course, but it's enough for me to use that word :-)
-
