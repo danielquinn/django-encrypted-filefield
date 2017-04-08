@@ -9,11 +9,17 @@ def _get_setting(name):
 
 
 def get_bytes(v):
+
     if isinstance(v, six.string_types):
         return bytes(v.encode("utf-8"))
-    if not v:
-        return None
-    return v
+
+    if isinstance(v, bytes):
+        return v
+
+    raise TypeError(
+        "SALT & PASSWORD must be specified as strings that convert nicely to "
+        "bytes."
+    )
 
 
 SALT = get_bytes(_get_setting("SALT"))
