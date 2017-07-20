@@ -37,7 +37,7 @@ class EncryptionMixin(object):
 
     def _get_url(self):
         return reverse(FETCH_URL_NAME, kwargs={
-            "path": super(EncrpytionMixin, self).url
+            "path": super(EncryptionMixin, self).url
         })
     url = property(_get_url)
 
