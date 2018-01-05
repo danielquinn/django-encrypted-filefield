@@ -37,7 +37,7 @@ class EncryptionMixin(object):
 
     def _get_url(self):
         return reverse(FETCH_URL_NAME, kwargs={
-            "path": FieldFile._get_url(self)
+            "path": super(EncryptionMixin, self).url
         })
     url = property(_get_url)
 
