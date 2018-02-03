@@ -1,5 +1,9 @@
 from django.core.checks import Error, register
-from django.urls import reverse, NoReverseMatch
+try:
+    from django.urls import reverse, NoReverseMatch
+except ImportError:
+    # Django < v2.0
+    from django.core.urlresolvers import reverse, NoReverseMatch
 
 from .constants import FETCH_URL_NAME, PASSWORD, SALT
 

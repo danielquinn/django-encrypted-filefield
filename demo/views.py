@@ -1,4 +1,8 @@
-from django.urls import reverse
+try:
+    from django.urls import reverse
+except ImportError:
+    # Django < v2.0
+    from django.core.urlresolvers import reverse
 
 from django.views.generic import CreateView, DetailView
 
