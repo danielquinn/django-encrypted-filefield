@@ -1,4 +1,5 @@
-from django.core.urlresolvers import reverse
+from django.urls import reverse
+
 from django.views.generic import CreateView, DetailView
 
 from django_encrypted_filefield.views import FetchView
