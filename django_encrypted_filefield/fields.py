@@ -1,7 +1,6 @@
 from io import BytesIO
+from django.urls import reverse
 
-from django.conf import settings
-from django.core.urlresolvers import reverse
 from django.db.models.fields.files import (
     FieldFile,
     FileField,
