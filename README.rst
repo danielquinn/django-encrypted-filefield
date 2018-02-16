@@ -172,3 +172,7 @@ What's the Status of the Project?
 Stable.  I'm actively using it in a production environment now and have been
 for some time without issue.  This isn't a guarantee that it'll work for
 everyone in every case of course, but it's enough for me to use that word :-)
+
+Note however that currently, this module hasn't been adapted to work in Django
+2.0+, so if you're using that, feel free to issue a pull-request that allows it
+to work in both 1.11 and 2.0+ :-)
