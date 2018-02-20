@@ -1,7 +1,6 @@
 try:
     from django.urls import reverse
-except ImportError:
-    # Django < v2.0
+except ImportError:  # Django < 2.0 # pragma: no cover
     from django.core.urlresolvers import reverse
 
 from django.views.generic import CreateView, DetailView
