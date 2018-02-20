@@ -1,8 +1,7 @@
 from django.core.checks import Error, register
 try:
     from django.urls import reverse, NoReverseMatch
-except ImportError:
-    # Django < v2.0
+except ImportError:  # Django < 2.0 # pragma: no cover
     from django.core.urlresolvers import reverse, NoReverseMatch
 
 from .constants import FETCH_URL_NAME, PASSWORD, SALT
