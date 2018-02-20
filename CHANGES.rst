@@ -14,7 +14,7 @@ Changelog
 
 * Initial release
 
-.. _spacerqui: https://github.com/spaceriqui
+.. _spaceriqui: https://github.com/spaceriqui
 
 .. _#9: https://github.com/danielquinn/django-encrypted-filefield/pull/9
 
