@@ -1,5 +1,9 @@
-from django.core.urlresolvers import reverse
 from django.test import TestCase, override_settings
+
+try:
+    from django.urls import reverse
+except ImportError:  # Django < 2.0 # pragma: no cover
+    from django.core.urlresolvers import reverse
 
 try:
     from unittest import mock  # Python 3

@@ -1,4 +1,8 @@
-from django.core.urlresolvers import reverse
+try:
+    from django.urls import reverse
+except ImportError:  # Django < 2.0 # pragma: no cover
+    from django.core.urlresolvers import reverse
+
 from django.views.generic import CreateView, DetailView
 
 from django_encrypted_filefield.views import FetchView

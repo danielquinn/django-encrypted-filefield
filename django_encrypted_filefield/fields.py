@@ -1,7 +1,10 @@
 from io import BytesIO
 
-from django.conf import settings
-from django.core.urlresolvers import reverse
+try:
+    from django.urls import reverse
+except ImportError:  # Django < 2.0 # pragma: no cover
+    from django.core.urlresolvers import reverse
+
 from django.db.models.fields.files import (
     FieldFile,
     FileField,
