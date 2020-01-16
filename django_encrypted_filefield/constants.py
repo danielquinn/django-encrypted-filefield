@@ -1,6 +1,6 @@
 import os
+import six
 from django.conf import settings
-from django.utils import six
 
 
 def _get_setting(name):

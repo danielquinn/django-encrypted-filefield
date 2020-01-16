@@ -1,5 +1,5 @@
+import six
 from django.test import TestCase, override_settings
-from django.utils import six
 from django_encrypted_filefield.constants import _get_setting, get_bytes
 
 try:
