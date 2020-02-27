@@ -1,6 +1,19 @@
 Changelog
 #########
 
+0.2.2
+=====
+
+* Added a dependency on six as it was removed from Django 3.x+.
+
+
+0.2.1
+=====
+
+* Fixed a hard dependency on python-magic==0.4.12 which appears to have been
+  removed from PyPI.
+
+
 0.2.0
 =====
 
