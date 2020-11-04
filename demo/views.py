@@ -1,8 +1,4 @@
-try:
-    from django.urls import reverse
-except ImportError:  # Django < 2.0 # pragma: no cover
-    from django.core.urlresolvers import reverse
-
+from django.urls import reverse
 from django.views.generic import CreateView, DetailView
 
 from django_encrypted_filefield.views import FetchView
@@ -29,4 +25,5 @@ class MyFetchView(FetchView):
     This really should be using a mixin like LoginRequiredMixin.  See the
     parent class for more information.
     """
+
     pass

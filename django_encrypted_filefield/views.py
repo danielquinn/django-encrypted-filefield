@@ -1,12 +1,12 @@
 import os
 
-import requests
-
-import magic
 from django.conf import settings
 from django.core.validators import URLValidator, ValidationError
 from django.http import Http404, HttpResponse
 from django.views.generic import View
+
+import magic
+import requests
 
 from .crypt import Cryptographer
 
@@ -51,7 +51,8 @@ class FetchView(View):
 
             # Normalise the path to strip out naughty attempts
             path = os.path.normpath(path).replace(
-                settings.MEDIA_URL, settings.MEDIA_ROOT, 1)
+                settings.MEDIA_URL, settings.MEDIA_ROOT, 1
+            )
 
             # Evil path request!
             if not path.startswith(settings.MEDIA_ROOT):
@@ -66,7 +67,8 @@ class FetchView(View):
 
         content = Cryptographer.decrypted(content)
         return HttpResponse(
-            content, content_type=magic.Magic(mime=True).from_buffer(content))
+            content, content_type=magic.Magic(mime=True).from_buffer(content)
+        )
 
     @staticmethod
     def _is_url(path):

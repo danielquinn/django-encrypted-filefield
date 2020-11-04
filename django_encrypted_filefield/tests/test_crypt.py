@@ -15,6 +15,5 @@ class CryptographerTestCase(TestCase):
     def test_decryption(self):
         data = b"This is some data"
         self.assertEqual(
-            Cryptographer.decrypted(Cryptographer.encrypted(data)),
-            data
+            Cryptographer.decrypted(Cryptographer.encrypted(data)), data
         )

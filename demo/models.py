@@ -1,7 +1,8 @@
 from django.db import models
+
 from django_encrypted_filefield.fields import (
     EncryptedFileField,
-    EncryptedImageField
+    EncryptedImageField,
 )
 
 
@@ -12,7 +13,7 @@ class MyModel(models.Model):
     image = EncryptedImageField(
         upload_to="images",
         width_field="image_width",
-        height_field="image_height"
+        height_field="image_height",
     )
     image_width = models.PositiveIntegerField()
     image_height = models.PositiveIntegerField()

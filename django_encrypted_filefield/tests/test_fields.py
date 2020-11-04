@@ -1,13 +1,7 @@
 from django.db import connection
 from django.test import SimpleTestCase
 
-from ..fields import (
-    EncryptedFieldFile,
-    EncryptedFileField,
-    EncryptedImageField,
-    EncryptedImageFieldFile,
-    EncryptionMixin
-)
+from ..fields import EncryptedFileField, EncryptedImageField
 
 
 class TestDbType(SimpleTestCase):
@@ -17,8 +11,8 @@ class TestDbType(SimpleTestCase):
 
     def test_db_parameters_respects_db_type_filefield(self):
         f = EncryptedFileField()
-        self.assertEqual(f.db_parameters(connection)['type'], 'varchar(100)')
+        self.assertEqual(f.db_parameters(connection)["type"], "varchar(100)")
 
     def test_db_parameters_respects_db_type_imagefilefield(self):
         f = EncryptedImageField()
-        self.assertEqual(f.db_parameters(connection)['type'], 'varchar(100)')
+        self.assertEqual(f.db_parameters(connection)["type"], "varchar(100)")

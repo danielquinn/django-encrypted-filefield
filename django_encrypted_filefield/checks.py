@@ -1,19 +1,18 @@
 from django.core.checks import Error, register
-try:
-    from django.urls import reverse, NoReverseMatch
-except ImportError:  # Django < 2.0 # pragma: no cover
-    from django.core.urlresolvers import reverse, NoReverseMatch
+from django.urls import NoReverseMatch, reverse
 
 from .constants import FETCH_URL_NAME, PASSWORD, SALT
 
 
-@register()
+@register("deff-constants")
 def constants_check(app_configs, **kwargs):
 
     check_messages = []
 
-    message = "{} must be defined in your environment for " \
-              "django-encrypted-filefield to work."
+    message = (
+        "{} must be defined in your environment for "
+        "django-encrypted-filefield to work."
+    )
 
     if not SALT:
         check_messages.append(Error(message.format("DEFF_SALT")))
@@ -23,7 +22,7 @@ def constants_check(app_configs, **kwargs):
     return check_messages
 
 
-@register()
+@register("deff-fetch-url")
 def fetch_url_check(app_configs, **kwargs):
 
     if not FETCH_URL_NAME:
@@ -32,9 +31,11 @@ def fetch_url_check(app_configs, **kwargs):
     try:
         reverse(FETCH_URL_NAME, kwargs={"path": "anything"})
     except NoReverseMatch:
-        return [Error(
-            "django-encrypted-filefield requires that you define a url for "
-            "the fetching the files."
-        )]
+        return [
+            Error(
+                "django-encrypted-filefield requires that you define a url for "
+                "the fetching the files."
+            )
+        ]
 
     return []
