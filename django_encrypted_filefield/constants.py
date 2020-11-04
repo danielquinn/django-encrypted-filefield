@@ -1,5 +1,5 @@
 import os
-import six
+
 from django.conf import settings
 
 
@@ -10,7 +10,7 @@ def _get_setting(name):
 
 def get_bytes(v):
 
-    if isinstance(v, six.string_types):
+    if isinstance(v, str):
         return bytes(v.encode("utf-8"))
 
     if isinstance(v, bytes):

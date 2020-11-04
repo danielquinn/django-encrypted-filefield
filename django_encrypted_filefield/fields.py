@@ -1,24 +1,15 @@
 from io import BytesIO
 
-try:
-    from django.urls import reverse
-except ImportError:  # Django < 2.0 # pragma: no cover
-    from django.core.urlresolvers import reverse
-
 from django.db.models.fields.files import (
     FieldFile,
     FileField,
     ImageField,
-    ImageFieldFile
+    ImageFieldFile,
 )
+from django.urls import reverse
 
 from .constants import FETCH_URL_NAME
 from .crypt import Cryptographer
-
-try:
-    from urllib.parse import quote as url_encode  # Python 3
-except ImportError:
-    from urllib import quote as url_encode  # Python 2
 
 
 class EncryptedFile(BytesIO):
@@ -27,21 +18,15 @@ class EncryptedFile(BytesIO):
         BytesIO.__init__(self, Cryptographer.encrypted(content.file.read()))
 
 
-class EncryptionMixin(object):
-
+class EncryptionMixin:
     def save(self, name, content, save=True):
-        return FieldFile.save(
-            self,
-            name,
-            EncryptedFile(content),
-            save=save
-        )
+        return super().save(name, EncryptedFile(content), save=save)
+
     save.alters_data = True
 
     def _get_url(self):
-        return reverse(FETCH_URL_NAME, kwargs={
-            "path": super(EncryptionMixin, self).url
-        })
+        return reverse(FETCH_URL_NAME, kwargs={"path": super().url})
+
     url = property(_get_url)
 
 
@@ -70,4 +55,5 @@ class EncryptedImageField(ImageField):
         own.
         """
         ImageField.update_dimension_fields(
-            self, instance, force=False, *args, **kwargs)
+            self, instance, force=False, *args, **kwargs
+        )

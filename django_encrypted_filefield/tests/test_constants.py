@@ -1,15 +1,9 @@
-import six
 from django.test import TestCase, override_settings
-from django_encrypted_filefield.constants import _get_setting, get_bytes
 
-try:
-    from unittest import mock  # Python 3
-except ImportError:
-    import mock  # Python 2
+from django_encrypted_filefield.constants import _get_setting, get_bytes
 
 
 class ConstantsTestCase(TestCase):
-
     def test_get_bytes_with_string(self):
         for s in ("a", "α", ""):
             self.assertEqual(get_bytes(s), bytes(s.encode("utf-8")))
@@ -22,7 +16,7 @@ class ConstantsTestCase(TestCase):
         inputs = (
             bytes("a".encode("utf-8")),
             bytes("α".encode("utf-8")),
-            bytes("".encode("utf-8"))
+            bytes("".encode("utf-8")),
         )
         for s in inputs:
             self.assertEqual(get_bytes(s), s)
