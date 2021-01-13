@@ -153,6 +153,19 @@ case we're using Django's default_storage, but the same logic should apply to
 all storage engines.
 
 
+Requirements
+-------------
+
+Requirements to install from pypi package manager
+
+.. code:: python
+
+    $ pip install cryptography
+    $ pip install python-magic # for ubuntu
+    $ pip install python-magic-bin==0.4.14 # for windows
+    $ pip install chardet
+    
+
 Stuff That Doesn't Work
 -----------------------
 
