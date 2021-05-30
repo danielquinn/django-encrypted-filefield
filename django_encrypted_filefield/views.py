@@ -44,18 +44,19 @@ class FetchView(View):
             raise Http404
 
         if self._is_url(path):
-
             content = requests.get(path, stream=True).raw.read()
 
         else:
+            MEDIA_ROOT = str(settings.MEDIA_ROOT)
 
             # Normalise the path to strip out naughty attempts
             path = os.path.normpath(path).replace(
-                settings.MEDIA_URL, settings.MEDIA_ROOT, 1
+                settings.MEDIA_URL.lstrip(
+                    "/"), MEDIA_ROOT.lstrip("/") + "/", 1
             )
 
             # Evil path request!
-            if not path.startswith(settings.MEDIA_ROOT):
+            if not path.startswith(MEDIA_ROOT):
                 raise Http404
 
             # The file requested doesn't exist locally.  A legit 404
